@@ -1,0 +1,13 @@
+.secondary-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-container{
+    width: 35%;
+}
+
+.form{
+    width: 100%;
+}

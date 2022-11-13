@@ -1,0 +1,68 @@
+<main class="main-container">
+
+    <h1 class="text-center display-4 m-4">REGISTRO DE CONTACTOS</h1>
+    
+    <div class="secondary-container">
+  
+      <div class="form-container">
+  
+        <form [formGroup]="form" class="form" (ngSubmit)="guardarContacto()">
+  
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ex: Jose Rafael">
+          </div>
+          <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Ex: Camacho Custodio">
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="correo" formControlName="correo" placeholder="josecamachoc0303@gmail.com">
+          </div>
+          <button (click)="agregarNumero()" class="btn btn-primary">Agregar celulares</button>
+    
+          <div class="mb-3" formArrayName="numeros">
+            <div *ngFor="let numero of getCTRL('numeros', form).controls;index as formNumero">
+                <div [formGroupName]="formNumero">
+                    <div class="mb-3">
+                      <label for="numero" class="form-label">Celular</label>
+                      <input type="text" class="form-control" id="numero" name="numero" placeholder="Ex: (829) 496 - 0058" formControlName="numero">
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <div class="mb-3">
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+        
+        </form>
+  
+      </div>
+  
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contacto of contactos">
+              <th scope="row">{{contacto.id}}</th>
+              <td>{{contacto.nombre}}</td>
+              <td>{{contacto.apellidos}}</td>
+              <td>{{contacto.correo}}</td>
+              <td class="btn" [routerLink]="['/editar', contacto.id]">Editar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </main>

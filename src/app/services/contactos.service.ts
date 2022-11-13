@@ -20,18 +20,9 @@ export class ContactosService {
   }
 
   guardarContacto(contacto:any){
-    // contacto.id = this.optenerContactos().length + 1;
-    // sessionStorage.setItem('contactos', JSON.stringify(contacto));
     this.optenerContactos();
     this.contactos.push(contacto);
     sessionStorage.setItem('contactos', JSON.stringify(this.contactos));
   }
 
-  actualizarContacto(){
-
-  }
-
-  eliminarContacto(id:number){
-    sessionStorage.removeItem(`contactos.${id}`);
-  }
 }

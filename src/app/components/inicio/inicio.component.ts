@@ -12,18 +12,12 @@ export class InicioComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   contactos:any[];
-  // contacto: Contacto = new Contacto();
 
   constructor(private contactosService: ContactosService) {}
 
   ngOnInit(): void {
     this.optenerContactos();
     this.iniciarFormularioPrincipal();
-    // this.contacto.nombre = 'Jose Rafael';
-    // this.contacto.apellidos = 'Camacho Custodio';
-    // this.contacto.correo = 'josecamachoc0303@gmail.com';
-    // this.contacto.numeros = ['8294960058', '8097782637'];
-    // this.guardarContacto();
   }
 
   iniciarFormularioPrincipal(): void {
@@ -54,16 +48,14 @@ export class InicioComponent implements OnInit {
 
   optenerContactos() {
     this.contactos = this.contactosService.optenerContactos();
-    console.log(this.contactos);
   }
 
   guardarContacto() {
     try {
       this.contactosService.guardarContacto(this.form.value);
-      console.log(this.form);
       this.optenerContactos();
     } catch (error) {
-      console.log(error); 
+      console.error(error); 
     }
   }
 
